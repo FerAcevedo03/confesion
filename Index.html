@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para Keren Abigail</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <audio id="musica" autoplay loop>
+  <source src="Perfect.mp3.mp3" type="audio/mp3">
+</audio>
+    <div class="fondo-estrellas"></div>
+    <div class="corazones"></div>
+
+    <!-- Música: se reproducirá al hacer clic -->
+    <audio id="musica">
+        <source src="https://dl.sndup.net/wr4r/Perfect%20Piano%20Cover.mp3" type="audio/mp3">
+        Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <div class="dedicatoria"><strong>Dedicado a: KEREN ABIGAIL ESQUIVEL LOZADA</strong></div>
+
+    <div class="container">
+        <button id="iniciarBtn" class="brillo">💖 Iniciar Declaración 💖</button>
+
+        <div id="confesion" class="hidden cuadros">
+            <div class="cuadro cuadro-izquierdo animada">
+                <p class="frase centrado">
+                    🌌 <strong>"En el vasto cosmos de mi existencia,<br>
+                        tú eres mi constelación más bella,<br>
+                        guiando cada uno de mis sueños"</strong> 🌟
+                </p>
+            </div>
+            <div class="cuadro cuadro-derecho animada-delay">
+                <p class="tiempo centrado"><strong>💘 Me enamoré de ti hace:</strong></p>
+                <div id="contador" class="contador centrado animada-delay2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('iniciarBtn');
+        const confesionDiv = document.getElementById('confesion');
+        const contador = document.getElementById('contador');
+        const musica = document.getElementById('musica');
+
+        btn.addEventListener('click', () => {
+            confesionDiv.classList.remove('hidden');
+            btn.style.display = 'none';
+            iniciarContador();
+
+            // Reproduce música al hacer clic
+            musica.play().catch(() => {
+                alert("Haz clic para permitir la música 🎵");
+            });
+        });
+
+        function iniciarContador() {
+            const inicio = new Date('2018-01-01T00:00:00');
+            setInterval(() => {
+                const ahora = new Date();
+                const diff = ahora - inicio;
+
+                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutos = Math.floor((diff / (1000 * 60)) % 60);
+                const segundos = Math.floor((diff / 1000) % 60);
+
+                contador.innerHTML = `
+          🕰️ <span class="amarillo"><strong>${dias}</strong></span> días<br>
+          ⏳ <span class="amarillo"><strong>${horas}</strong></span> horas<br>
+          🫶 <span class="amarillo"><strong>${minutos}</strong></span> minutos<br>
+          💓 <span class="amarillo"><strong>${segundos}</strong></span> segundos
+        `;
+            }, 1000);
+        }
+
+        // Corazones flotantes
+        const corazones = document.querySelector('.corazones');
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            corazones.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }, 300);
+    </script>
+</body>
+
+</html>

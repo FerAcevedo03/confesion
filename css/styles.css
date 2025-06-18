@@ -1,0 +1,179 @@
+/* Fondo galaxia */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    background: black;
+    color: white;
+}
+
+.fondo-estrellas {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    filter: brightness(0.4);
+}
+
+.dedicatoria {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ffd1dc;
+    text-shadow: 1px 1px 3px black;
+}
+
+.corazones {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: flotar 5s linear forwards;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0) scale(1) rotate(45deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(0.5) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+button {
+    background: #ff66a3;
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 102, 163, 0.6);
+    margin-bottom: 2rem;
+}
+
+button:hover {
+    background: #e05590;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 102, 163, 0.9);
+}
+
+.cuadros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.cuadro {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    width: 350px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: center;
+}
+
+.amarillo {
+    color: #ffff66;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animada {
+    animation: fadeInUp 1.5s ease forwards;
+}
+
+.animada-delay {
+    animation: fadeInUp 1.5s ease forwards;
+    animation-delay: 1s;
+}
+
+.animada-delay2 {
+    animation: fadeInUp 1.5s ease forwards;
+    animation-delay: 2s;
+}
+
+.brillo {
+    animation: parpadeo 2s infinite;
+}
+
+@keyframes parpadeo {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(255, 102, 163, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(255, 102, 163, 1);
+    }
+}
